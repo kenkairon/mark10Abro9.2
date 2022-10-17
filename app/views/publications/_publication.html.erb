@@ -1,0 +1,43 @@
+<div id="<%= dom_id publication %>">
+  <p>
+    <strong>Title:</strong>
+    <%= publication.title %>
+  </p>
+
+  <p>
+    <strong>Description:</strong>
+    <%= publication.description %>
+  </p>
+
+  <p>
+    <strong>Route:</strong>
+    <%= publication.route %>
+  </p>
+
+  <p>
+    <strong>Price:</strong>
+    <%= publication.price %>
+  </p>
+
+  <p>
+    <strong>User:</strong>
+    <%= publication.user_id %>
+  </p>
+
+  <p>
+    <%= image_tag publication.photo, width:200 if publication.photo.attached? %>
+  </p>
+   <p>
+    <p>Etiquetas</p>
+    <% if publication.labels.any? %>
+      <ul>
+        <% publication.labels.each do |etiquetas| %>
+            <li><%= link_to etiquetas, etiquetas %></li>
+        <% end %>
+      </ul>
+          <% else %>
+            <p>no hay etiquetas</p>
+    <% end %>
+  </p>
+
+</div>

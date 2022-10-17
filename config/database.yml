@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: postgres
+  password: 1234
+  host: localhost
+
+development:
+  <<: *default
+  database: trabajo18rubyonrails_development
+test:
+  <<: *default
+  database: trabajo18rubyonrails_test
+production:
+  <<: *default
+  database: trabajo18rubyonrails_production
+  username: trabajo18rubyonrails
+  password: <%= ENV["TRABAJO7RUBYONRAILS_DATABASE_PASSWORD"] %>
