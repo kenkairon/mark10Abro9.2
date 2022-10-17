@@ -20,13 +20,12 @@ class PublicationsController < ApplicationController
 
   # GET /publications/1/edit
   def edit
-    @publication.labels.build
+    
   end
 
   # POST /publications or /publications.json
   def create
-    @publication = Publication.new(publication_params)
-
+    @publication = Publication.new(publication_params)    
     respond_to do |format|
       if @publication.save
         format.html { redirect_to publication_url(@publication), notice: "Publication was successfully created." }
