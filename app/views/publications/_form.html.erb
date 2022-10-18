@@ -2,7 +2,6 @@
   <% if publication.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(publication.errors.count, "error") %> prohibited this publication from being saved:</h2>
-
       <ul>
         <% publication.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -10,49 +9,49 @@
       </ul>
     </div>
   <% end %>
-
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_field :description %>
-  </div>
-
-  <div>
-    <%= form.label :route, style: "display: block" %>
-    <%= form.text_field :route %>
-  </div>
-
-  <div>
-    <%= form.label :price, style: "display: block" %>
-    <%= form.number_field :price %>
-  </div>
-
-  <div>
-    <% @var = current_user.try(:id) %>
-    <% form.label :user_id, style: "display: block" %>
-    <%= form.hidden_field :user_id, value: @var %>
-  </div>
-
-  <div>
-    <%= form.label :photos, style: "display: block" %>
-    <%= form.file_field :photo %>
-  </div>
-  <%= form.fields_for :labels do | etiqueta | %>
-      <div class="labels_fields">
-        <div class="fields">
-            <%= etiqueta.label :title, "Etiqueta" %><br>
-            <%= etiqueta.text_field :contact  %>
-            <%= etiqueta.check_box :_destroy %>
-            <%= etiqueta.label :_destroy, "Borrar",data: { confirm: 'Are you sure?' } %>
-        </div>
+<div class="container">
+  <div class="row alert alert-secondary border border-info">
+      <div class="col-xl-6 col-12">
+        <%= form.label :Título, style: "display: block" %>
+        <%= form.text_field :title , class:'form-control' %>
       </div>
-  <% end %>
-
-  <div>
-    <%= form.submit %>
+      <div class="col-xl-6 col-12">
+        <%= form.label :Descripción, style: "display: block" %>
+        <%= form.text_area :description, class:'form-control'%>
+      </div>
+      <div class="col-xl-6 col-12">
+        <%= form.label :Redes_Sociales, style: "display: block" %>
+        <%= form.text_field :route, class:'form-control'%>
+      </div>
+      <div class="col-xl-6 col-12">
+        <%= form.label :Foto, style: "display: block" %>
+        <%= form.file_field :photo  ,class:'form-control'%>
+      </div>
+      <div class="col-xl-6 col-12">
+        <%= form.label :Precio, style: "display: block" %>
+        <%= form.text_field :price, class:'form-control'%>
+      </div>
+      <div  class="col-xl-4 col-12">
+          <%= form.fields_for :labels do | etiqueta | %>
+            <div class="labels_fields">
+                <div class="fields">
+                  <%= etiqueta.label :contact, "Etiqueta" %><br>
+                  <%= etiqueta.text_field :contact ,class:'form-control' %>
+                  <%= etiqueta.check_box :_destroy %>
+                  <%= etiqueta.label :_destroy, "Borrar",data: { confirm: 'Are you sure?' } %>
+                </div>
+            </div>
+          <% end %>
+        </div>
+      <div>
+          <% @var = current_user.try(:id) %>
+          <% form.label :user_id, style: "display: block" %>
+          <%= form.hidden_field :user_id, value: @var %>
+      </div>
+      <div class="col-xl-6 col-4">
+          <br/>
+          <%= form.submit  class:'bi bi-pencil-square btn btn-primary'%>
+      </div>
   </div>
+</div>
 <% end %>

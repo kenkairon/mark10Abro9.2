@@ -1,43 +1,26 @@
 <div id="<%= dom_id publication %>">
   <p>
-    <strong>Title:</strong>
+    <strong>Título:</strong>
     <%= publication.title %>
   </p>
 
   <p>
-    <strong>Description:</strong>
+    <strong>Descripción:</strong>
     <%= publication.description %>
   </p>
 
   <p>
-    <strong>Route:</strong>
+    <strong>Redes Sociales:</strong>
     <%= publication.route %>
   </p>
 
   <p>
-    <strong>Price:</strong>
+    <strong>Precio:</strong>
     <%= publication.price %>
   </p>
 
   <p>
-    <strong>User:</strong>
+    <strong>Usuario:</strong>
     <%= publication.user_id %>
   </p>
-
-  <p>
-    <%= image_tag publication.photo, width:200 if publication.photo.attached? %>
-  </p>
-   <p>
-    <p>Etiquetas</p>
-    <% if publication.labels.any? %>
-      <ul>
-        <% publication.labels.each do |etiquetas| %>
-            <li><%= link_to etiquetas, etiquetas %></li>
-        <% end %>
-      </ul>
-          <% else %>
-            <p>no hay etiquetas</p>
-    <% end %>
-  </p>
-
 </div>

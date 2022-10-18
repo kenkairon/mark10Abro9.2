@@ -1,0 +1,25 @@
+<!--Container del Navbar-->
+    <div class="container">
+        <nav class="row navbar navbar-light" style="background-color: #e3f2fd;">
+          <div class="col-md-7">
+             <!--Logo -->
+              <a href="" class="col-6-lg col-6-md  col-md-auto btn btn-outline-primary btn-lg">
+                  <i class="bi bi-person-circle"></i>
+                  <b><%= current_user.try(:email) %></b>
+                  <i class="bi bi-laptop"></i>
+              </a>
+          </div>
+          <div class="col-md-3">
+          </div>
+          <div class="col-md-2">
+             <!--Facebook-->
+              <a href="#" class="text-reset btn btn-primary btn-sm"><i class="bi bi-facebook"></i> </a>
+                <!--Twitter-->
+              <a href="#" class="text-reset btn btn-info btn-sm"><i class="bi bi-twitter"></i></a>
+                <!--Instagram-->
+              <a href="#" class="text-reset btn btn-warning btn-sm"><i class="bi bi-instagram"></i></a>
+                <!--Pinterest-->
+              <a href="#" class="text-reset btn btn-danger btn-sm"><i class="bi bi-pinterest btn-sm"></i> </a>
+          </div>
+        </nav>
+    </div>

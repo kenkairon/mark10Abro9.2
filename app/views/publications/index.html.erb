@@ -1,27 +1,54 @@
-
-
-<h1>Publications</h1>
 <% if current_user %>
-   <p>Hello <%= current_user.email %>!</p>
-   <p>tu eres a [<%= current_user.rol  %>]</p>
+<div class="d-grid gap-2 d-md-flex justify-content-md-end border border-primary rounded">
+   <p>Hola <b><%= current_user.email %>!</b>
+   tu eres a <b>[<%= current_user.rol  %>]</b>
    <% if current_user.admin? %>
-   <br/>
        son <%= User.count %> usuarios en el sistema
    <% end %>
-   <p>usuario autentificado</p>
-   <%= link_to "Sign out", destroy_user_session_path,'data-turbo-method': :delete  %>
-<% else %>
-   <p>Tu no estas Conectado</p>
-   <%=link_to "Registrarse", new_user_registration_path %>
-   <%=link_to "Ingresar", new_user_session_path %>
-<% end %>
-<div id="publications">
-  <% @publications.each do |publication| %>
-    <%= render publication %>
-    <p>
-      <%= link_to "Show this publication", publication %>
-    </p>
-  <% end %>
+   usuario autentificado</p>
+   <%= link_to " Cerrar Sesión", destroy_user_session_path,'data-turbo-method': :delete,  class:'bi bi-bag-x-fill btn btn-danger' %>
 </div>
-
-<%= link_to "New publication", new_publication_path %>
+<% else %>
+   
+<div class="d-grid gap-2 d-md-flex justify-content-md-end border border-primary rounded">
+   <p class="col-3"><b>No estas Autentificado</b></p>
+   <%=link_to " Registrarse", new_user_registration_path, class:'bi bi-newspaper btn btn-primary  me-md-2 col-3 rounded-pill' %>
+   <%=link_to " Ingresar", new_user_session_path, class:'bi bi-hand-index-thumb btn btn-info  col-3 rounded-pill' %>
+<% end %>
+</div>
+<br/>
+<div>
+<%= link_to "Nueva Publicación", new_publication_path, class:'bi bi-file-earmark-plus btn btn-success col-3' %>  
+</div>
+<div  id="publications" class="row container-fluid">
+    <h1>Publicaciones</h1>
+    <%= paginate @publications %>
+    <% @publications.each do |publication| %>
+      <div class="container-fluid card text-dark bg-light mb-3 c " style="max-width: 540px;">
+          <div class="row g-0">
+            <div class="col-md-5">
+                <p class="card-text"><small class="text-muted"><%= link_to " Mostrar Publicación", publication, class:'bi bi-eye-fill btn btn-primary' %></small></p>
+                <%= image_tag publication.photo, width:200,class:'img-fluid rounded-circle border border-1 border border-secondary' if publication.photo.attached? %>
+            </div>
+            <div class="col-md-7">
+              <div class="card-body">
+                <p class="card-text"><%= render publication %></p>
+                <p class="card-text">
+                  <p>Etiquetas</p>
+                  <% if publication.labels.any? %>
+                    <ul>
+                      <% publication.labels.each do |etiquetas| %>
+                        <li><%= link_to etiquetas, etiquetas %></li>
+                      <% end %>
+                    </ul>
+                    <% else %>
+                    <p>no hay etiquetas</p>
+                  <% end %>
+                </p>
+              </div>
+            </div>
+          </div>
+      </div>
+    <% end %>
+    <%= paginate @publications %>
+</div>

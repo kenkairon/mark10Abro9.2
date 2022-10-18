@@ -36,7 +36,7 @@ Rails.application.configure do
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :amazon
 
-  # configure devise 
+  # configure devise
   config.action_mailer.default_url_options = { host: '127.0.0.1', port: 3000 }
 
   # Don't care if the mailer can't send.

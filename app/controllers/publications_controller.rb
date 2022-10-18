@@ -5,7 +5,7 @@ class PublicationsController < ApplicationController
   
   # GET /publications or /publications.json
   def index
-    @publications = Publication.all
+    @publications = Publication.order(:title).page(params[:page])
   end
 
   # GET /publications/1 or /publications/1.json
@@ -15,12 +15,12 @@ class PublicationsController < ApplicationController
   # GET /publications/new
   def new
     @publication = Publication.new
-    @publication.labels.build
+    3.times {@publication.labels.build}
   end
 
   # GET /publications/1/edit
   def edit
-    
+    1.times {@publication.labels.build}
   end
 
   # POST /publications or /publications.json
@@ -28,7 +28,7 @@ class PublicationsController < ApplicationController
     @publication = Publication.new(publication_params)    
     respond_to do |format|
       if @publication.save
-        format.html { redirect_to publication_url(@publication), notice: "Publication was successfully created." }
+        format.html { redirect_to publication_url(@publication), notice: "La Publicación fue Creada con éxito." }
         format.json { render :show, status: :created, location: @publication }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -41,7 +41,7 @@ class PublicationsController < ApplicationController
   def update
     respond_to do |format|
       if @publication.update(publication_params)
-        format.html { redirect_to publication_url(@publication), notice: "Publication was successfully updated." }
+        format.html { redirect_to publication_url(@publication), notice: "La Publicación se Actualizó con éxito." }
         format.json { render :show, status: :ok, location: @publication }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -55,7 +55,7 @@ class PublicationsController < ApplicationController
     @publication.destroy
 
     respond_to do |format|
-      format.html { redirect_to publications_url, notice: "Publication was successfully destroyed." }
+      format.html { redirect_to publications_url, notice: "La Publicación ha sido Eliminada." }
       format.json { head :no_content }
     end
   end

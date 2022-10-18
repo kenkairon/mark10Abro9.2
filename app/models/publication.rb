@@ -2,7 +2,7 @@ class Publication < ApplicationRecord
   belongs_to :user
   has_many :labels, dependent: :destroy
   has_one_attached :photo
-  #paginates_per 4
+  paginates_per 4
 
   validates :title, presence: true
   validates :description, presence: true

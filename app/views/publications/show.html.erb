@@ -1,10 +1,37 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @publication %>
-
-<div>
-  <%= link_to "Edit this publication", edit_publication_path(@publication) %> |
-  <%= link_to "Back to publications", publications_path %>
-
-  <%= button_to "Destroy this publication", @publication, method: :delete %>
+<div class="card container-fluid mb-3 border border-info card text-dark bg-light mb-3" style="max-width: 540px;">  
+  <div class="row col-xl-12 g-0">
+    <div class="col-md-4 col-xl-4">
+      <%= image_tag @publication.photo,class:'img-fluid rounded-circle border border-1 border border-secondary',width:200  if @publication.photo.attached? %>
+    </div>
+    <div class="col-md-8 col-xl-8">
+      <div class="card-body">
+        <p class="card-text"> <%= render @publication %></p>
+        <p class="card-text"><small class="text-muted">
+             <h3>Etiquetas</h3>
+                <% if @publication.labels.any? %>
+           <ul>
+                <% @publication.labels.each do |etiquetas| %>
+                  <li><%= link_to etiquetas, etiquetas %></li>
+                <% end %>
+          </ul>
+             <% else %>
+                 <p>no hay etiquetas</p>
+            <% end %>        
+          </small>
+        </p>
+      </div>
+    </div>
+  </div>
+   <div class="row container-fluid alert alert-primary border border-info">
+    <div class="col-4 col-xl-4">
+      <%= link_to "Editar Publicación", edit_publication_path(@publication), class:'bi bi-pencil-square btn btn-info btn-sm'%> 
+    </div>
+    <div class="col-4 col-xl-4">
+      <%= link_to "Volver al Inicio", publications_path, class:'bi bi-house-door btn btn-primary btn-sm'%>
+    </div><br>
+    <div class="col-4 col-xl-4">
+      <%= button_to "Eliminar publicación", @publication, method: :delete, class:'bi bi-trash3-fill btn btn-danger btn-sm',data: { confirm: 'Are you sure?' }%>
+    </div>
+  </div>
 </div>
+ 
