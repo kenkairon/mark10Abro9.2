@@ -80,4 +80,4 @@ end
 #gema paginacion
   gem "kaminari"
 #gema dotev
-gem 'dotenv-rails', groups: [:development, :test]
+  gem 'dotenv-rails', groups: [:development, :test]

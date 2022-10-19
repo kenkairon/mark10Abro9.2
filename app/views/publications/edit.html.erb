@@ -4,7 +4,13 @@
 
 <br>
 
-<div>
-  <%= link_to "Show this publication", @publication %> |
-  <%= link_to "Back to publications", publications_path %>
+<div class="row">
+  <div class="col-xl-3">
+    <%= link_to " Mostrar Publicación", @publication , class:'bi bi-eye-fill btn btn-outline-info' %>
+  </div>
+  <div class="col-xl-3">
+    <%= link_to "Volver a Publicación", publications_path, class:'bi bi-house-door btn btn-outline-primary'%>
+  </div>
 </div>
+
+

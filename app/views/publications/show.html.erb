@@ -8,31 +8,35 @@
       <div class="card-body">
         <p class="card-text"> <%= render @publication %></p>
         <p class="card-text"><small class="text-muted">
-             <h3>Etiquetas</h3>
-                <% if @publication.labels.any? %>
-           <ul>
+            <h3>Etiquetas</h3>
+            <% if @publication.labels.any? %>
+              <ul>
                 <% @publication.labels.each do |etiquetas| %>
                   <li><%= link_to etiquetas, etiquetas %></li>
                 <% end %>
-          </ul>
-             <% else %>
-                 <p>no hay etiquetas</p>
-            <% end %>        
+              </ul>
+            <% else %>
+                <p>no hay etiquetas</p>
+            <% end %>
           </small>
         </p>
       </div>
     </div>
   </div>
-   <div class="row container-fluid alert alert-primary border border-info">
+  <!--Si esta logeado puede ver estos botones -->
+  <% if user_signed_in?  %>
+  <div class="row container-fluid alert alert-primary border border-info">
     <div class="col-4 col-xl-4">
       <%= link_to "Editar Publicación", edit_publication_path(@publication), class:'bi bi-pencil-square btn btn-info btn-sm'%> 
     </div>
     <div class="col-4 col-xl-4">
-      <%= link_to "Volver al Inicio", publications_path, class:'bi bi-house-door btn btn-primary btn-sm'%>
-    </div><br>
-    <div class="col-4 col-xl-4">
       <%= button_to "Eliminar publicación", @publication, method: :delete, class:'bi bi-trash3-fill btn btn-danger btn-sm',data: { confirm: 'Are you sure?' }%>
+    </div>
+  <% end %>
+      <br>
+    <div class="col-4 col-xl-4">
+      <%= link_to "Volver al Inicio", publications_path, class:'bi bi-house-door btn btn-primary btn-sm'%>
     </div>
   </div>
 </div>
- 
+

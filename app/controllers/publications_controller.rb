@@ -9,13 +9,13 @@ class PublicationsController < ApplicationController
   end
 
   # GET /publications/1 or /publications/1.json
-  def show 
+  def show
   end
 
   # GET /publications/new
   def new
     @publication = Publication.new
-    3.times {@publication.labels.build}
+    2.times {@publication.labels.build}
   end
 
   # GET /publications/1/edit
@@ -25,7 +25,7 @@ class PublicationsController < ApplicationController
 
   # POST /publications or /publications.json
   def create
-    @publication = Publication.new(publication_params)    
+    @publication = Publication.new(publication_params)
     respond_to do |format|
       if @publication.save
         format.html { redirect_to publication_url(@publication), notice: "La Publicación fue Creada con éxito." }

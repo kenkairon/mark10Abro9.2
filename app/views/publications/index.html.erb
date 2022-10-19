@@ -18,7 +18,9 @@
 </div>
 <br/>
 <div>
-<%= link_to "Nueva Publicación", new_publication_path, class:'bi bi-file-earmark-plus btn btn-success col-3' %>  
+  <% if user_signed_in?  %>
+    <%= link_to "Nueva Publicación", new_publication_path, class:'bi bi-file-earmark-plus btn btn-success col-3' %>  
+  <% end %>
 </div>
 <div  id="publications" class="row container-fluid">
     <h1>Publicaciones</h1>
