@@ -44,9 +44,17 @@
           <% end %>
         </div>
       <div>
+      <div  class="col-xl-4 col-12">
+      <% @varo = current_user.try(:id) %>
+      <%= form.fields_for(:users) do |entity_form| %>
+          <%= entity_form.hidden_field :user_id, value: @varo %>         
+      <% end %>
+      </div>
+      
+      <div>
           <% @var = current_user.try(:id) %>
           <% form.label :user_id, style: "display: block" %>
-          <%= form.hidden_field :user_id, value: @var %>
+          <%= form.hidden_field :user_id, value: @var %>         
       </div>
       <div class="col-xl-6 col-4">
           <br/>
