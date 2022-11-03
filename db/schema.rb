@@ -54,10 +54,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_02_022513) do
 
   create_table "labels", force: :cascade do |t|
     t.string "contact"
-    t.bigint "publication_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["publication_id"], name: "index_labels_on_publication_id"
   end
 
   create_table "labels_publications", id: false, force: :cascade do |t|
@@ -95,6 +93,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_02_022513) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "boards", "publications"
   add_foreign_key "boards", "users"
-  add_foreign_key "labels", "publications"
   add_foreign_key "publications", "users"
 end

@@ -7,12 +7,12 @@ default: &default
 
 development:
   <<: *default
-  database: trabajo29rubyonrails_development
+  database: trabajo28rubyonrails_development
 test:
   <<: *default
-  database: trabajo29rubyonrails_test
+  database: trabajo28rubyonrails_test
 production:
   <<: *default
-  database: trabajo29rubyonrails_production
-  username: trabajo29rubyonrails
-  password: <%= ENV["TRABAJO29RUBYONRAILS_DATABASE_PASSWORD"] %>
+  database: trabajo28rubyonrails_production
+  username: trabajo28rubyonrails
+  password: <%= ENV["TRABAJO28RUBYONRAILS_DATABASE_PASSWORD"] %>
