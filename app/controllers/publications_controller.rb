@@ -16,16 +16,18 @@ class PublicationsController < ApplicationController
   def new
     @publication = Publication.new
     2.times {@publication.labels.build}
+    @publication.users.build
   end
 
   # GET /publications/1/edit
   def edit
     1.times {@publication.labels.build}
+    @publication.users.build
   end
 
   # POST /publications or /publications.json
   def create
-    @publication = Publication.new(publication_params)
+    @publication = Publication.new(publication_params)    
     respond_to do |format|
       if @publication.save
         format.html { redirect_to publication_url(@publication), notice: "La Publicación fue Creada con éxito." }
@@ -60,7 +62,10 @@ class PublicationsController < ApplicationController
     end
   end
 
-  private
+  private    
+
+  
+ 
     # Use callbacks to share common setup or constraints between actions.
     def set_publication
       @publication = Publication.find(params[:id])

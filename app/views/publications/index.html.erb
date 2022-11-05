@@ -29,25 +29,26 @@
       <div class="container-fluid card text-dark bg-light mb-3 c " style="max-width: 540px;">
           <div class="row g-0">
             <div class="col-md-5">
-                <p class="card-text"><small class="text-muted"><%= link_to " Mostrar Publicación", publication, class:'bi bi-eye-fill btn btn-primary' %></small></p>
+                <p class="card-text"><small class="text-muted"><%= link_to "Tablero de Publicación", publication, class:'bi bi-eye-fill btn btn-primary' %></small></p>
                 <%= image_tag publication.photo, width:200,class:'img-fluid rounded-circle border border-1 border border-secondary' if publication.photo.attached? %>
             </div>
             <div class="col-md-7">
               <div class="card-body">
                 <p class="card-text"><%= render publication %></p>
                 <p class="card-text">
-                  <p>Etiquetas</p>
+                  <h5>Etiquetas</h5>
                   <% if publication.labels.any? %>
                     <ul>
                       <% publication.labels.each do |etiquetas| %>
-                        <li><%= link_to etiquetas, etiquetas %></li>
+                         <li class="btn btn-outline-info"><%= link_to etiquetas, etiquetas %></li>
                       <% end %>
                     </ul>
                     <% else %>
                     <p>no hay etiquetas</p>
                   <% end %>
                 </p>
-              </div>
+                <br>                    
+              </div>              
             </div>
           </div>
       </div>

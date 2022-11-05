@@ -1,27 +1,30 @@
-<h2>Log in</h2>
-<p class="lead"> *** Usuario Admin para pruebas: superadmin@gmail.com | clave: 123456 </p>
-<p class="lead"> *** Usuario Visitante para pruebas: visitante@gmail.com | clave: 123456 </p>
+<p class="lead alert alert-success"> *** Usuario Admin para pruebas: superadmin@gmail.com | clave: 123456 </p>
+<p class="lead alert alert-warning"> *** Usuario Visitante para pruebas: visitante@gmail.com | clave: 123456 </p>
+
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
+<div class="container alert alert-secondary border border-info col-10">
+<h2>Ingresar</h2>
+<br/>
+  <div class="field col-6">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email",class:'form-control ', placeholder:'Ingrese el correo' %>
   </div>
 
-  <div class="field">
+  <div class="field col-6">
     <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+    <%= f.password_field :password, autocomplete: "current-password",class:'form-control' %>
   </div>
-
+<br />
   <% if devise_mapping.rememberable? %>
-    <div class="field">
+    <div class="field col-6">
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
     </div>
   <% end %>
-
+<br />
   <div class="actions">
-    <%= f.submit "Ingresar", data:{turbo: false}  %>
+    <%= f.submit "Ingresar", data:{turbo: false}, class:'btn btn-primary'  %>
   </div>
 <% end %>
-
+</div>
 <%= render "devise/shared/links" %>
