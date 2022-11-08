@@ -20,15 +20,11 @@ class Publication < ApplicationRecord
   validates :description, presence: true
   validates :route, presence: true
   validates :price, presence: true
-  #validates :photo, attached: true, limit: { min: 1, max: 3 }, content_type: [:png, :jpg, :jpeg, :mp3,:gif]
+  validates :photo, attached: true, content_type: ['image/png', 'image/jpeg']
 
   accepts_nested_attributes_for :labels ,
   reject_if: proc { |attr| attr['contact'].blank? },
   allow_destroy: true
-
-   accepts_nested_attributes_for :boards ,
-   reject_if: proc { |attr| attr['fecha'].blank? },
-   allow_destroy: true
 
   def to_s
       title

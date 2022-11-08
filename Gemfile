@@ -81,3 +81,7 @@ end
   gem "kaminari"
 #gema dotev
   gem 'dotenv-rails', groups: [:development, :test]
+#gema de active storage validation
+  gem 'active_storage_validations'
+#gema mini_magick
+  gem 'mini_magick', '>= 4.9.5'

@@ -11,14 +11,16 @@
     </div>
   <% end %>
 
-  <div>
+  <div> 
     <%= form.label :publication_id, style: "display: block" %>
     <%= form.text_field :publication_id %>
   </div>
 
   <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
+  <% @varo = current_user.try(:id) %>
+      <%= form.fields_for(:users) do |entity_form| %>
+          <%= entity_form.hidden_field :user_id, value: @varo %>
+  <% end %>
   </div>
 
    <div>
